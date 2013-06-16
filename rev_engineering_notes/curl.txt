@@ -1,0 +1,39 @@
+Step 1. Get to the login page and get session cookies
+  We need to pass "location" for curl to follow 30x redirects. 
+  We also need to fake the user agent. Otherwise Amazon won't pass us any session cookies. Boo-hoo, amazon!
+  The cookies are saved into the file mycookies-1.jar
+
+  curl  -H "User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"  \
+        --location -v -c mycookie.jar http://www.amazon.com/gp/digital/fiona/manage
+
+  If you want to seperate the verbose information about redirects and GETs from the actual content, you can simply append the following to the command above:
+  "  1> output.html 2>curl-info.txt"
+  This will send stout to output.html and error output/diagnostic messages to curl-info.txt.
+  Having the output in two different files makes it easier to analyse the output afterwards.
+
+  This results in three GETs, where the last one is a https sign-in page that will redirect afterwards
+  > GET /gp/digital/fiona/manage HTTP/1.1
+  > GET /gp/digital/fiona/manage/184-7011972-2238144?ie=UTF8&*Version*=1&*entries*=0 HTTP/1.1
+  > GET /ap/signin?_encoding=UTF8&accountStatusPolicy=P1&openid.assoc_handle=usflex&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.ns.pape=http%3A%2F%2Fspecs.openid.net%2Fextensions%2Fpape%2F1.0&openid.pape.max_auth_age=900&openid.return_to=https%3A%2F%2Fwww.amazon.com%2Fgp%2Fdigital%2Ffiona%2Fmanage%3Fie%3DUTF8%26*Version*%3D1%26*entries*%3D0%26signInRedirect%3D1 HTTP/1.1
+  We have to inspect the output above more closely to see that the server url has changed to a https connection.
+
+Step 2. Log-in using the redirect sign-in page and the cookies we got, saving new cookies to mycookies-2.jar
+  To see which form fields we need to send we need to inspect the html we got in the previous request.
+  Scroll to the first <form> tag and see all the input tags there. These are the ones you need to send.
+  I am unsure if you really need all of them, especially all the OpenID fields, but to be sure ... :)
+  To be able to POST all this data, you need to put them into a text document in name=value pairs, linked together with ampersands. 
+  You can see some of this document below, but since some of these fields are of sensitive character, I will just show some of it.
+
+  appActionToken=IkamrPRjkf7UoXIPJi0Xp91Yxk0j3D&appAction=SIGNIN&pageId=ape:dXNmbGV4&ue_back=1&email=carlerik@gmail.com&password=MYSECRET
+
+  I put this into a file "login-form.dat" which I pass to curl by passing "--data login-form.dat".
+  All of these fields must be url-encoded! If you need a command to do that for you, this might work for you. 
+  alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+  alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
+
+  You might as well just copy this from Chrome's developer window, which already has these fields encoded.
+
+  curl --data login-form.dat -H "User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36"  --location -v -b mycookies-1.jar -c  mycookies-2.jar 'https://www.amazon.com/ap/signin'
+
+Step 3. Unfortunately I haven't gotten further. I get a 404... This is where I start writing a python script using the Requests library ...
+http://docs.python-requests.org/en/latest/user/quickstart/#cookies

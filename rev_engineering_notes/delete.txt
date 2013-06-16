@@ -1,0 +1,66 @@
+For å slette noe må du ha en gyldig cookie og oppgi parametrene under. Jeg vet ikke om alle er nødvendige.
+
+contentName:WUAULPCMY3PMX2CCJZTMWJXI2WVETDRI  #Dette er selvsagt id-en
+loanId:
+sid:184-5755217-8741333 #Aner ikke om dette er nødvendig
+isAjax:1 # Ei heller dette. Virker rart. 
+category:kindle_pdoc # Statistikk?
+
+SAFM23EI7CGOHN62JRAO6WTFXPAABEPK
+
+
+
+Eksempelkall under
+
+2 requests  ❘  1.9 KB transferred
+fiona-delete.html
+/gp/digital/fiona/du
+2.00 s2 ms
+ref=kinw_myk_pdocs_delete
+/gp/digital/fiona/manage/features/order-history/ajax/blank.html
+462 ms2 ms
+
+Request URL:https://www.amazon.com/gp/digital/fiona/du/fiona-delete.html
+Request Method:POST
+Status Code:200 OK
+Request Headersview parsed
+POST /gp/digital/fiona/du/fiona-delete.html HTTP/1.1
+Host: www.amazon.com
+Connection: keep-alive
+Content-Length: 107
+Cache-Control: no-cache
+Pragma: no-cache
+Origin: https://www.amazon.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Accept: */*
+Referer: https://www.amazon.com/gp/digital/fiona/manage
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Cookie: x-wl-uid=1pd/UnMqcS6trlCONI2pVyizP8fzQBsaLUE15lz5JuJtGatFYCELrcsY51WdUiQFUPO8QLbhoX8B2DNXDamVahA==; s_cc=true; s_nr=1365929396802-New; s_vnum=1797929396803%26vn%3D1; s_dslv=1365929396804; s_sq=%5B%5BB%5D%5D; s_ppv=47; session-token=Zwa7kC7F8/y5sSV3PhoHak0uP1kNVd+lOxjJVNdST2WbtHRpsAd5kgLna28fF6T1KtybWDy9abTEycNMdQynIzsCXZfwZLYLnSsXb4zjX8qjJBzrVyeXNWeIgfL2CaCCxdqR5sZ+U70D5QFx6WijuyY6CbnFMlLb4lpZ6jx03x2NO0KAfbiZ7zr/Ck3fTThTxnBumpJHe2/+kaf8YpzRdwMlbSJTfSzaia2ivvzM5es4LpZeEilFDup4Jld8cmLEUvO56V8detZfA0vPX94WdqcPaEOtOxHc; x-main=H39N3OFS63jyguaxjrIQuFtlt4aZbnDI; at-main=5|9a6XiOHF9YQ4L1MNrI0/Z339BnHL9te1hHspi8fuQ9zosAsDckSzqSekcovZELjpHFw3JHF52AFuU3BLaQy3+BClZDgPkm6kOyJaHNdsbOBPBZ7T4GNFCD3Mvk/SGu+j4vZw/jIzd4Da2AxRlTbdBGEzMBDYrRtG0JfdLsAn8OZt54TbEt5+hEduJ+9MGy0mujLm/zpPxFMbelja004VOkmi7T4GaPdY; sess-at-main="Snl0lFmSaXCJuOsHGbxxRLbebnXAJYPp8stAnb1hQ4A="; csm-hit=2102.22|1365972106130; ubid-main=190-4196085-1710461; session-id-time=2082787201l; session-id=184-5755217-8741333
+
+Form 
+contentName:WUAULPCMY3PMX2CCJZTMWJXI2WVETDRI
+loanId:
+sid:184-5755217-8741333
+isAjax:1
+category:kindle_pdoc
+
+
+
+Response 
+cache-control:no-cache
+Connection:keep-alive
+Content-Encoding:gzip
+Content-Type:text/html; charset=ISO-8859-1
+Date:Sun, 14 Apr 2013 20:42:59 GMT
+p3p:policyref="http://www.amazon.com/w3c/p3p.xml",CP="CAO DSP LAW CUR ADM IVAo IVDo CONo OTPo OUR DELi PUBi OTRi BUS PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA HEA PRE LOC GOV OTC "
+Server:nginx
+Set-cookie:ubid-main=190-4196085-1710461; path=/; domain=.amazon.com; expires=Tue, 01-Jan-2036 08:00:01 GMT
+Set-cookie:session-id-time=2082787201l; path=/; domain=.amazon.com; expires=Tue, 01-Jan-2036 08:00:01 GMT
+Set-cookie:session-id=184-5755217-8741333; path=/; domain=.amazon.com; expires=Tue, 01-Jan-2036 08:00:01 GMT
+Transfer-Encoding:chunked
+Vary:Accept-Encoding,User-Agent
+x-amz-id-1:1BN0QBBVXX5A8BPR6VKN
+x-amz-id-2:d7MMdMXmYyLK1cqM6OMbStH4PmiDGdi0GHsjN9un6ONt2iUFzJdC7vi9/J2KWByD

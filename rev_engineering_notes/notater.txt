@@ -1,0 +1,22 @@
+Notater på Manage Kindle (https://www.amazon.com/gp/digital/fiona/manage?ie=UTF8&ref_=kinw_myk_surl_2#All)
+
+Systemet heter Fiona
+
+Hver tittel har mange tr-er.
+  En av disse har klassen "rowHeaderCollapsed"
+  Den siste td-en i raden har en <form> med action /gp/digital/fiona/content-download/fiona-dl.html
+  Input-feltets verdi er id-en til boka.
+
+Laster masse dynamiske skript, blant annet MYK (My Kindle)
+  https://images-na.ssl-images-amazon.com/images/G/01/browser-scripts/mykJS/mykJS-379578403._V1_.js
+    window.myk=new MYK();
+    Ajax.makeRequest
+  Her finner man mye av logikken som brukes på siden, også objekter som brukes f.eks. i Fion.deleteItem() under
+    Fion.gufsAjaxObj=new Ajax("/gp/digital/fiona/du/fiona-delete.html");
+    var ajaxMsgString = "contentName=" + asin + "&loanId=" + loanId + "&sid=" + sid + "&isAjax=1" + "&category=" + itemData.category;
+    Fion.gufsAjaxObj.makeRequest( ajaxMsgString, callback );
+
+Man ser ofte en streng a la "random" eller "randomizer". Dette er som regel bare Date.now(), og brukes for at spørringene ikke skal caches.
+
+Lesende kall. 
+  Se read_titles.txt

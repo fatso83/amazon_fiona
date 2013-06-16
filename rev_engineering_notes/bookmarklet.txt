@@ -1,0 +1,5 @@
+You can't remove them all at once. However, the best solution I can offer is to use this bookmarklet script
+
+javascript:(function(){ var v = new RegExp("PersonalDocuments"); if (!v.test(document.URL)) { return false; } {a=document.getElementsByClassName('rowBodyCollapsed');for(var i = 0; i<a.length; i++){Fion.deleteItem('deleteItem_'+a[i].getAttribute('asin'));};return; }})();
+
+It will delete all documents in a single page. At least it's better than delete them one by one. Good luck!
