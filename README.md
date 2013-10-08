@@ -32,3 +32,6 @@ working, and how I was supposed to use curl to get in.
 Thankfully I abandened the idea of scripting this in Bash + cURL, and
 starting hacking on a Python version using the Requests library and
 BeautifulSoup. Some hours later I finally got in :-)
+
+## Installing requirements
+pip install --user -r requirements.txt
