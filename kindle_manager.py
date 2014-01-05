@@ -8,7 +8,7 @@ h = HTMLParser();
 amazon = 'https://www.amazon.com'
 
 def usage():
-    print("USAGE:", sys.argv[0], " <email> <username> ")
+    print("USAGE:", sys.argv[0], " <email> <password> ")
     sys.exit(1);
 
 def essential_info_string(item):
