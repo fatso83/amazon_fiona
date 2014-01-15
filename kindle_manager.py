@@ -65,7 +65,10 @@ def init_session(email, password):
 
     soup = BeautifulSoup(r.content)
     if soup.find_all(class_ = 'message error'):
-        raise Exception("Login failed")
+        raise Exception("Login failed: wrong username/password")
+    
+    if soup.find_all( "div", id = "ap_captcha_img" ):
+        raise Exception("Login failed: CAPTCHA needed")
 
 def usage():
     print("USAGE:" + sys.argv[0] + " <email> <password> ")
@@ -81,8 +84,8 @@ if __name__ == '__main__':
 
     try:
         init_session(my_email, my_password)
-    except Exception:
-        print("Login failed")
+    except Exception as ex:
+        print(ex)
         sys.exit(1)
 
     docs = fetch_personal_docs()
