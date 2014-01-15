@@ -1,15 +1,20 @@
+# Utility library to manipulate the Kindle cloud storage
+# Author: Carl-Erik Kopseng <carlerik@gmail.com>
+# Tested on Python 2.7 and 3.x
+
 import requests, re, sys, json
 from bs4 import BeautifulSoup
-from html.parser import HTMLParser
+import sys
+
+if sys.version_info >= (3, 0):
+        from html.parser import HTMLParser
+else: #Python 2 support
+        from HTMLParser import HTMLParser
 
 #The session object that persists cookies and default values across requests
 s = requests.Session()
 h = HTMLParser();
 amazon = 'https://www.amazon.com'
-
-def usage():
-    print("USAGE:", sys.argv[0], " <email> <password> ")
-    sys.exit(1);
 
 def essential_info_string(item):
     return '[' + item['asin'] + ']  ' + h.unescape(item['title'])
@@ -54,10 +59,19 @@ def init_session(email, password):
     form_values['password'] = password
 
     # This gets us in. The session cookies are crucial!
-    s.post( amazon + '/ap/signin',
+    r = s.post( amazon + '/ap/signin',
             data = form_values,
             allow_redirects=True )
 
+    soup = BeautifulSoup(r.content)
+    if soup.find_all(class_ = 'message error'):
+        raise Exception("Login failed")
+
+def usage():
+    print("USAGE:" + sys.argv[0] + " <email> <password> ")
+    sys.exit(1);
+
+# Example client program
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         usage();
@@ -65,7 +79,12 @@ if __name__ == '__main__':
     my_email = sys.argv[1]
     my_password = sys.argv[2]
 
-    init_session(my_email, my_password)
+    try:
+        init_session(my_email, my_password)
+    except Exception:
+        print("Login failed")
+        sys.exit(1)
+
     docs = fetch_personal_docs()
     books = fetch_bought_titles()
 
