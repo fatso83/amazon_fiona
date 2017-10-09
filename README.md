@@ -4,7 +4,7 @@ A utility library of functions that makes it possible to interact with
 Amazon's FIONA system for administrating the titles on your Kindle.
 Not yet expanded to a full program, just some examples on how to use it.
 
-There's also a [javascript implementation](https://github.com/fatso83/amazon_fiona_js), that has some [[notes on the new 2017 API](https://github.com/fatso83/amazon_fiona_js/blob/master/TODO.md).
+There's also a [javascript implementation](https://github.com/fatso83/amazon_fiona_js), that has some [notes on the new 2017 API](https://github.com/fatso83/amazon_fiona_js/blob/master/TODO.md).
 
 ## Sample output
     Has 273 personal documents. The last one is Instapaper: Friday, Jun. 14
